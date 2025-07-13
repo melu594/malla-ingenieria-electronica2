@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Malla Interactiva - Ingeniería Electrónica</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f4f7fa;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #003366;
+    }
+    .container {
+      max-width: 1000px;
+      margin: auto;
+    }
+    .year {
+      background: #004080;
+      color: white;
+      padding: 12px 20px;
+      margin: 30px 0 10px;
+      border-radius: 8px;
+      font-size: 1.4rem;
+    }
+    .semester {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+      padding: 15px 20px;
+    }
+    .semester h3 {
+      margin-top: 0;
+      color: #004080;
+    }
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    li {
+      background: #e6f0ff;
+      margin: 8px 0;
+      padding: 10px 15px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border-left: 5px solid transparent;
+    }
+    li:hover {
+      background: #cce0ff;
+      border-left-color: #007acc;
+    }
+    li.selected {
+      background: #d0d0d0;
+      text-decoration: underline;
+      font-weight: bold;
+      border-left-color: #333;
+    }
+
+    .info-box {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      max-width: 400px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      padding: 20px;
+      transform: translate(-50%, -50%);
+      z-index: 100;
+      display: none;
+    }
+    .info-box h4 {
+      margin-top: 0;
+      color: #007acc;
+    }
+    .info-close {
+      float: right;
+      cursor: pointer;
+      font-weight: bold;
+      color: #999;
+      font-size: 20px;
+    }
+    .info-close:hover {
+      color: #333;
+    }
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right:0;
+      bottom:0;
+      background: rgba(0,0,0,0.3);
+      display: none;
+      z-index: 50;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Malla Interactiva - Ingeniería Electrónica</h1>
+
+  <!-- PRIMER AÑO (CBC) -->
+  <div class="year">Primer año (CBC)</div>
+  <div class="semester">
+    <h3>Materias</h3>
+    <ul>
+      <li data-info="Estudio del método científico y su impacto en la ciencia.">Pensamiento Científico</li>
+      <li data-info="Análisis de las relaciones entre sociedad, estado y ciudadanía.">Sociedad y Estado</li>
+      <li data-info="Lógica computacional e introducción a la programación.">Pensamiento Computacional</li>
+      <li data-info="Física clásica: cinemática, dinámica, trabajo y energía.">Física</li>
+      <li data-info="Introducción al cálculo diferencial e integral.">Análisis Matemático A</li>
+      <li data-info="Fundamentos de álgebra: matrices, funciones, ecuaciones.">Álgebra A</li>
+    </ul>
+  </div>
+
+  <!-- SEGUNDO AÑO -->
+  <div class="year">Segundo año</div>
+  <div class="semester">
+    <h3>3er Cuatrimestre</h3>
+    <ul>
+      <li data-info="Cálculo integral, series, sucesiones.">Análisis Matemático II</li>
+      <li data-info="Fenómenos físicos en sistemas de partículas.">Física de los Sistemas de Partículas</li>
+      <li data-info="Introducción a los conceptos clave de la ingeniería electrónica.">Introducción a la Ingeniería Electrónica</li>
+      <li data-info="Estructuras de datos y programación en C.">Algoritmos y Programación</li>
+    </ul>
+  </div>
+  <div class="semester">
+    <h3>4to Cuatrimestre</h3>
+    <ul>
+      <li data-info="Vectores, espacios vectoriales, transformaciones lineales.">Álgebra Lineal</li>
+      <li data-info="Electricidad, magnetismo, leyes de Maxwell, calor.">Electricidad, Magnetismo y Calor</li>
+      <li data-info="Modelos de componentes electrónicos básicos.">Introducción a los Dispositivos Electrónicos</li>
+      <li data-info="Puertas lógicas, álgebra booleana, flip-flops.">Sistemas Digitales</li>
+    </ul>
+  </div>
+
+  <!-- TERCER AÑO -->
+  <div class="year">Tercer año</div>
+  <div class="semester">
+    <h3>5to Cuatrimestre</h3>
+    <ul>
+      <li data-info="Probabilidades, distribuciones, estadísticas.">Probabilidad y Estadística</li>
+      <li data-info="Señales continuas, transformadas, sistemas lineales.">Señales y Sistemas</li>
+      <li data-info="Circuitos resistivos, RLC, análisis nodal.">Análisis de Circuitos</li>
+      <li data-info="Principios de redes de datos y telecomunicaciones.">Redes de Comunicaciones</li>
+    </ul>
+  </div>
+  <div class="semester">
+    <h3>6to Cuatrimestre</h3>
+    <ul>
+      <li data-info="Técnicas de planificación y seguimiento de proyectos.">Planificación de Proyectos</li>
+      <li data-info="Diseño, modelado y simulación de circuitos microelectrónicos.">Circuitos Microelectrónicos</li>
+      <li data-info="Procesos aleatorios en señales y sistemas.">Procesos Estocásticos</li>
+      <li data-info="Sistemas de control, realimentación, estabilidad.">Control Automático</li>
+      <li data-info="Diseño de software y hardware en sistemas embebidos.">Taller de Sistemas Embebidos</li>
+    </ul>
+  </div>
+
+  <!-- CUARTO AÑO -->
+  <div class="year">Cuarto año</div>
+  <div class="semester">
+    <h3>7mo Cuatrimestre</h3>
+    <ul>
+      <li data-info="Reacciones químicas y electroquímicas aplicadas.">Química y Electroquímica</li>
+      <li data-info="Teoría y aplicaciones del electromagnetismo.">Electromagnetismo Aplicado</li>
+      <li data-info="Control industrial y automatización práctica.">Taller de Automatización y Control</li>
+      <li data-info="Técnicas de filtrado, FFT, señales en tiempo real.">Taller de Procesamiento de Señales</li>
+    </ul>
+  </div>
+  <div class="semester">
+    <h3>8vo Cuatrimestre</h3>
+    <ul>
+      <li data-info="Semiconductores, dopaje, uniones PN, transistores.">Dispositivos Semiconductores</li>
+      <li data-info="Diseño e implementación de enlaces digitales.">Taller de Comunicaciones Digitales</li>
+      <li data-info="Diseño avanzado de placas y circuitos electrónicos.">Taller de Diseño de Circuitos Electrónicos</li>
+      <li data-info="Normas y prevención de riesgos laborales.">Higiene y Seguridad</li>
+      <li data-info="Materias opcionales de especialización.">Electivas / Optativas</li>
+    </ul>
+  </div>
+
+  <!-- QUINTO AÑO -->
+  <div class="year">Quinto año</div>
+  <div class="semester">
+    <h3>9no Cuatrimestre</h3>
+    <ul>
+      <li data-info="Marco legal del ejercicio profesional.">Legislación y Ejercicio Profesional</li>
+      <li data-info="Gestión de recursos, tiempos y equipos en proyectos.">Gestión de Proyectos Electrónicos</li>
+      <li data-info="Trabajo final integrador de conocimientos adquiridos.">Trabajo Integrador Final</li>
+      <li data-info="Materias optativas a elección.">Electivas / Optativas</li>
+    </ul>
+  </div>
+  <div class="semester">
+    <h3>10mo Cuatrimestre</h3>
+    <ul>
+      <li data-info="Impacto ambiental, responsabilidad social y sustentabilidad.">Impacto Social, Ambiental y Desarrollo Sustentable</li>
+      <li data-info="Trabajo final de grado integrador.">Trabajo Integrador Final</li>
+      <li data-info="Materias optativas a elección.">Electivas / Optativas</li>
+    </ul>
+  </div>
+</div>
+
+<!-- Popup -->
+<div class="overlay"></div>
+<div class="info-box" id="infoBox">
+  <span class="info-close" id="infoClose">&times;</span>
+  <h4 id="infoTitle"></h4>
+  <p id="infoDesc"></p>
+</div>
+
+<script>
+  const infoBox = document.getElementById('infoBox');
+  const infoTitle = document.getElementById('infoTitle');
+  const infoDesc = document.getElementById('infoDesc');
+  const infoClose = document.getElementById('infoClose');
+  const overlay = document.querySelector('.overlay');
+
+  const materias = document.querySelectorAll('li[data-info]');
+
+  materias.forEach(item => {
+    item.addEventListener('click', () => {
+      // Marca/desmarca como aprobada
+      item.classList.toggle('selected');
+
+      // Mostrar popup con descripción
+      infoTitle.textContent = item.textContent;
+      infoDesc.textContent = item.getAttribute('data-info');
+      infoBox.style.display = 'block';
+      overlay.style.display = 'block';
+    });
+  });
+
+  infoClose.addEventListener('click', () => {
+    infoBox.style.display = 'none';
+    overlay.style.display = 'none';
+  });
+
+  overlay.addEventListener('click', () => {
+    infoBox.style.display = 'none';
+    overlay.style.display = 'none';
+  });
+</script>
+
+</body>
+</html>
